@@ -1,8 +1,13 @@
 from telegram.ext import Updater, Filters, BaseFilter, MessageHandler, CommandHandler
+from classes.database import Database
+from classes.filters import FilterRooster
 
 # Set token
 updater = Updater("")
 dispatcher = updater.dispatcher
+
+# Initialize database class
+db = Database()
 
 # rooster command
 def txtGetRooster(bot, update):
@@ -29,9 +34,6 @@ def unknownCmd(bot, update):
     bot.sendMessage(chat_id=update.message.chat_id, text="Sorry, ik snap niet wat je bedoelt. Vraag om hulp óf gebruik het commando /help")
 
 # Define custom filter
-class FilterRooster(BaseFilter):
-    def filter(self, message):
-        return 'rooster' in message.text.lower()
 filterRooster = FilterRooster()
 
 # Add handler to dispatcher for rooster command

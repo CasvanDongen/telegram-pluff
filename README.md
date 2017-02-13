@@ -1,1 +1,1 @@
-telegram-pluff
+Pluff bot for Telegram
